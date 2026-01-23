@@ -21,6 +21,9 @@ export default function Header() {
 					<li>
 						<Link href="/events">Events</Link>
 					</li>
+					<li>
+						<Link href="/dead-zone-mapping">Dead Zone Map</Link>
+					</li>
 				</ul>
 			</nav>
 		</header>
