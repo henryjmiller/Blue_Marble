@@ -11,6 +11,8 @@ const EMPTY_FORM = {
 	date: "",
 	time: "",
 	location: "",
+	lat: "",
+	lng: "",
 };
 
 function canManageEvents(role) {
@@ -40,6 +42,8 @@ export default function Events() {
 			date: event.date,
 			time: event.time,
 			location: event.location,
+			lat: event.lat ?? "",
+			lng: event.lng ?? "",
 		});
 		setEditingId(event.id);
 		setShowForm(true);
@@ -53,10 +57,15 @@ export default function Events() {
 
 	function handleSubmit(e) {
 		e.preventDefault();
+		const data = {
+			...form,
+			lat: form.lat !== "" ? parseFloat(form.lat) : null,
+			lng: form.lng !== "" ? parseFloat(form.lng) : null,
+		};
 		if (editingId) {
-			updateEvent(editingId, form);
+			updateEvent(editingId, data);
 		} else {
-			addEvent({ ...form, createdBy: user.username });
+			addEvent({ ...data, createdBy: user.username });
 		}
 		closeForm();
 	}
@@ -150,6 +159,34 @@ export default function Events() {
 							required
 						/>
 					</label>
+
+					<div className={styles.row}>
+						<label className={styles.label}>
+							Latitude
+							<input
+								className={styles.input}
+								type="number"
+								step="any"
+								placeholder="e.g. 51.5074"
+								value={form.lat}
+								onChange={(e) => handleField("lat", e.target.value)}
+							/>
+						</label>
+						<label className={styles.label}>
+							Longitude
+							<input
+								className={styles.input}
+								type="number"
+								step="any"
+								placeholder="e.g. -0.1278"
+								value={form.lng}
+								onChange={(e) => handleField("lng", e.target.value)}
+							/>
+						</label>
+					</div>
+					<p className={styles.coordHint}>
+						Optional — adds a pin on the Event Map page.
+					</p>
 
 					<div className={styles.formActions}>
 						<button className={styles.submitBtn} type="submit">

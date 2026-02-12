@@ -27,6 +27,9 @@ export default function Header() {
 						<Link href="/events">Events</Link>
 					</li>
 					<li>
+						<Link href="/map">Event Map</Link>
+					</li>
+					<li>
 						<Link href="/dead-zone-mapping">Dead Zone Map</Link>
 					</li>
 					<li className={styles.authItem}>

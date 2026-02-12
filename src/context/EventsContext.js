@@ -11,6 +11,8 @@ const SEED_EVENTS = [
 		date: "2026-03-15",
 		time: "09:00",
 		location: "Brighton Beach, UK",
+		lat: 50.8198,
+		lng: -0.1371,
 		createdBy: "admin",
 		attendees: ["guest"],
 	},
@@ -21,7 +23,9 @@ const SEED_EVENTS = [
 			"An interactive workshop exploring the importance of coral reefs, the threats they face, and what we can do to help protect them.",
 		date: "2026-04-02",
 		time: "14:00",
-		location: "Blue Marble Community Centre",
+		location: "Blue Marble Community Centre, London",
+		lat: 51.5074,
+		lng: -0.1278,
 		createdBy: "moderator",
 		attendees: [],
 	},
@@ -33,12 +37,14 @@ const SEED_EVENTS = [
 		date: "2026-04-18",
 		time: "18:30",
 		location: "University of Plymouth, Lecture Hall B",
+		lat: 50.3755,
+		lng: -4.1427,
 		createdBy: "admin",
 		attendees: ["moderator", "guest"],
 	},
 ];
 
-const STORAGE_KEY = "blueMarbleEvents";
+const STORAGE_KEY = "blueMarbleEvents_v2";
 
 const EventsContext = createContext(null);
 

@@ -104,6 +104,12 @@
 	flex: 1;
 }
 
+.coordHint {
+	margin: -8px 0 8px;
+	font-size: 0.8rem;
+	color: #829ab1;
+}
+
 .formActions {
 	display: flex;
 	gap: 12px;
