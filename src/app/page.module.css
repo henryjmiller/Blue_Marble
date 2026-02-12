@@ -1,3 +1,5 @@
+/* ─── Hero ─── */
+
 .hero {
 	position: relative;
 	display: flex;
@@ -152,4 +154,169 @@
 		transform: translateY(-85vh) scale(1.4);
 		opacity: 0;
 	}
+}
+
+/* ─── Shared section styles ─── */
+
+.sectionTitle {
+	font-size: 2rem;
+	margin: 0 0 24px;
+	color: #0a2e4d;
+}
+
+.sectionText {
+	font-size: 1.1rem;
+	line-height: 1.8;
+	color: #334e68;
+	margin: 0 0 16px;
+	max-width: 720px;
+}
+
+/* ─── Mission ─── */
+
+.mission {
+	padding: 80px 24px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	background: #fff;
+}
+
+/* ─── What We Focus On ─── */
+
+.focus {
+	padding: 80px 24px;
+	background: #f0f7fc;
+	text-align: center;
+}
+
+.cardGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: 24px;
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+.card {
+	background: #fff;
+	border-radius: 12px;
+	padding: 32px 24px;
+	text-align: center;
+	box-shadow: 0 2px 12px rgba(10, 46, 77, 0.08);
+	transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 6px 20px rgba(10, 46, 77, 0.14);
+}
+
+.cardIcon {
+	font-size: 2.5rem;
+	display: block;
+	margin-bottom: 16px;
+}
+
+.cardTitle {
+	font-size: 1.2rem;
+	margin: 0 0 12px;
+	color: #0a2e4d;
+}
+
+.cardText {
+	font-size: 0.95rem;
+	line-height: 1.6;
+	color: #486581;
+	margin: 0;
+}
+
+/* ─── Stats ─── */
+
+.stats {
+	display: flex;
+	justify-content: center;
+	gap: 48px;
+	flex-wrap: wrap;
+	padding: 64px 24px;
+	background: linear-gradient(135deg, #0a2e4d, #0d6ebd);
+	color: #fff;
+	text-align: center;
+}
+
+.stat {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-width: 180px;
+}
+
+.statNumber {
+	font-family: var(--font-quicksand), system-ui, sans-serif;
+	font-size: 3rem;
+	font-weight: 600;
+	line-height: 1;
+	margin-bottom: 8px;
+}
+
+.statLabel {
+	font-size: 0.95rem;
+	opacity: 0.85;
+	max-width: 200px;
+	line-height: 1.4;
+}
+
+/* ─── Get Involved ─── */
+
+.getInvolved {
+	padding: 80px 24px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	background: #fff;
+}
+
+.ctaGroup {
+	display: flex;
+	gap: 16px;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-top: 24px;
+}
+
+.ctaPrimary {
+	display: inline-block;
+	padding: 14px 36px;
+	border-radius: 40px;
+	background: #0d6ebd;
+	color: #fff;
+	font-family: var(--font-quicksand), system-ui, sans-serif;
+	font-size: 1rem;
+	font-weight: 500;
+	text-decoration: none;
+	transition: background 0.3s;
+}
+
+.ctaPrimary:hover {
+	background: #0a2e4d;
+}
+
+.ctaSecondary {
+	display: inline-block;
+	padding: 14px 36px;
+	border: 2px solid #0d6ebd;
+	border-radius: 40px;
+	color: #0d6ebd;
+	font-family: var(--font-quicksand), system-ui, sans-serif;
+	font-size: 1rem;
+	font-weight: 500;
+	text-decoration: none;
+	transition: background 0.3s, color 0.3s;
+}
+
+.ctaSecondary:hover {
+	background: #0d6ebd;
+	color: #fff;
 }
