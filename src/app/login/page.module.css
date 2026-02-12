@@ -1,0 +1,120 @@
+.page {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 80vh;
+	padding: 40px 24px;
+	background: #f0f7fc;
+}
+
+.form {
+	width: 100%;
+	max-width: 400px;
+	background: #fff;
+	border-radius: 12px;
+	padding: 40px 32px;
+	box-shadow: 0 4px 20px rgba(10, 46, 77, 0.1);
+}
+
+.title {
+	margin: 0 0 4px;
+	font-size: 1.75rem;
+	color: #0a2e4d;
+	text-align: center;
+}
+
+.subtitle {
+	margin: 0 0 28px;
+	text-align: center;
+	color: #486581;
+	font-size: 0.95rem;
+}
+
+.error {
+	margin: 0 0 16px;
+	padding: 10px 14px;
+	background: #fef2f2;
+	border: 1px solid #fca5a5;
+	border-radius: 8px;
+	color: #b91c1c;
+	font-size: 0.9rem;
+	text-align: center;
+}
+
+.label {
+	display: block;
+	margin-bottom: 16px;
+	font-size: 0.9rem;
+	font-weight: 500;
+	color: #334e68;
+}
+
+.input {
+	display: block;
+	width: 100%;
+	margin-top: 6px;
+	padding: 10px 14px;
+	border: 1px solid #bcccdc;
+	border-radius: 8px;
+	font-size: 1rem;
+	font-family: inherit;
+	color: #0a2e4d;
+	transition: border-color 0.2s;
+}
+
+.input:focus {
+	outline: none;
+	border-color: #0d6ebd;
+	box-shadow: 0 0 0 3px rgba(13, 110, 189, 0.15);
+}
+
+.button {
+	display: block;
+	width: 100%;
+	padding: 12px;
+	margin-top: 8px;
+	background: #0d6ebd;
+	color: #fff;
+	border: none;
+	border-radius: 40px;
+	font-family: var(--font-quicksand), system-ui, sans-serif;
+	font-size: 1rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: background 0.3s;
+}
+
+.button:hover {
+	background: #0a2e4d;
+}
+
+.accounts {
+	margin-top: 28px;
+	padding-top: 20px;
+	border-top: 1px solid #e4ecf2;
+}
+
+.accountsTitle {
+	margin: 0 0 8px;
+	font-size: 0.85rem;
+	font-weight: 500;
+	color: #486581;
+	text-align: center;
+}
+
+.accountList {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	font-size: 0.85rem;
+	color: #627d98;
+	line-height: 1.8;
+}
+
+.accountList li {
+	text-align: center;
+}
+
+.accountList strong {
+	color: #0a2e4d;
+}
