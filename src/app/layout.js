@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Inter, Quicksand } from "next/font/google";
+import Providers from "../components/Providers";
 import Header from "../components/Header/Header";
 
 const inter = Inter({
@@ -25,8 +26,10 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body className={`${inter.variable} ${quicksand.variable}`}>
-        <Header />
-				{children}
+				<Providers>
+					<Header />
+					{children}
+				</Providers>
 			</body>
 		</html>
 	);
