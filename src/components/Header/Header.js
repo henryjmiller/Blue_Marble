@@ -32,6 +32,9 @@ export default function Header() {
 					<li>
 						<Link href="/dead-zone-mapping">Dead Zone Map</Link>
 					</li>
+					<li>
+						<Link href="/ocean-metrics">Ocean Metrics</Link>
+					</li>
 					<li className={styles.authItem}>
 						{user ? (
 							<div className={styles.userMenu}>
