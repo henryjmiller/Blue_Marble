@@ -30,6 +30,9 @@ export default function SightingsPage() {
             {/* Header with title and kids mode toggle */}
             <SightingsHeader />
 
+            {/* Button to report a new sighting */}
+            <NewSightingButton />
+
             {/* Show loading message while data is being fetched */}
             {loading ? (
                 <p className={styles.loading}>Loading sightings...</p>
@@ -38,8 +41,6 @@ export default function SightingsPage() {
                 <SightingGrid sightings={sightings} />
             )}
 
-            {/* Floating button to report a new sighting */}
-            <NewSightingButton />
         </main>
     );
 }
