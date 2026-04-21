@@ -1,0 +1,85 @@
+.page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+}
+
+.imageWrapper {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 28px;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.title {
+    margin: 0 0 8px;
+    font-size: 2rem;
+    color: #0a2e4d;
+}
+
+.meta {
+    margin: 0;
+    color: #486581;
+    font-size: 1rem;
+}
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+}
+
+.badge {
+    padding: 4px 14px;
+    background: #e8f4fd;
+    color: #0d6ebd;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.section {
+    margin-bottom: 28px;
+    padding: 24px;
+    background: #fff;
+    border: 1px solid #d9e2ec;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(10, 46, 77, 0.05);
+}
+
+.sectionTitle {
+    margin: 0 0 12px;
+    font-size: 1.2rem;
+    color: #0a2e4d;
+}
+
+.text {
+    margin: 0;
+    color: #486581;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+.scientific {
+    margin: 8px 0 0;
+    color: #829ab1;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+    .page {
+        padding: 24px 16px 60px;
+    }
+}
