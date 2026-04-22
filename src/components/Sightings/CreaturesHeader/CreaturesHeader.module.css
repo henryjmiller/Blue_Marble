@@ -1,0 +1,39 @@
+.header {
+    margin-bottom: 36px;
+}
+
+.title {
+    margin: 0 0 6px;
+    font-size: 2rem;
+    color: #0a2e4d;
+}
+
+.subtitle {
+    margin: 0 0 16px;
+    color: #486581;
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+.toggle {
+    padding: 8px 24px;
+    background: #0d6ebd;
+    color: #fff;
+    border: none;
+    border-radius: 40px;
+    font-family: var(--font-quicksand), system-ui, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.toggle:hover {
+    background: #0a2e4d;
+}
+
+@media (max-width: 600px) {
+    .page {
+        padding: 24px 16px 60px;
+    }
+}

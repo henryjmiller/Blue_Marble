@@ -1,0 +1,13 @@
+.page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+    position: relative;
+}
+
+.loading {
+    text-align: center;
+    color: #627d98;
+    font-size: 1.05rem;
+    padding: 60px 0;
+}

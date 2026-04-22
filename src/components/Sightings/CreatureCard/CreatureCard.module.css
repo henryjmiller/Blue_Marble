@@ -1,0 +1,78 @@
+.card {
+    background: #fff;
+    border: 1px solid #d9e2ec;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(10, 46, 77, 0.05);
+    transition: box-shadow 0.2s;
+}
+
+.card:hover {
+    box-shadow: 0 4px 16px rgba(10, 46, 77, 0.1);
+}
+
+.imageWrapper {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.body {
+    padding: 16px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.name {
+    margin: 0;
+    font-size: 1.15rem;
+    color: #0a2e4d;
+}
+
+.scientific {
+    margin: 0;
+    color: #829ab1;
+    font-style: italic;
+    font-size: 0.85rem;
+}
+
+.badge {
+    align-self: flex-start;
+    padding: 4px 12px;
+    background: #e8f4fd;
+    color: #0d6ebd;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.description {
+    margin: 0;
+    color: #486581;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.funFact {
+    margin: 0;
+    color: #0a2e4d;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    padding: 12px;
+    background: #f0f7fc;
+    border-radius: 8px;
+    border-left: 3px solid #0d6ebd;
+}
+
+@media (max-width: 600px) {
+    .page {
+        padding: 24px 16px 60px;
+    }
+}
