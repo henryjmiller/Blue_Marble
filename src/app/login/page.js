@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../../context/AuthContext";
 import styles from "./page.module.css";
@@ -12,10 +12,9 @@ export default function Login() {
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
 
-	if (user) {
-		router.push("/");
-		return null;
-	}
+	useEffect(() => {
+		if (user) router.push("/");
+	}, [user, router]);
 
 	function handleSubmit(e) {
 		e.preventDefault();
@@ -39,8 +38,7 @@ export default function Login() {
 				{error && <p className={styles.error}>{error}</p>}
 
 				<label className={styles.label}>
-					Username
-					<input
+					Username<input
 						className={styles.input}
 						type="text"
 						value={username}
@@ -50,8 +48,7 @@ export default function Login() {
 				</label>
 
 				<label className={styles.label}>
-					Password
-					<input
+					Password<input
 						className={styles.input}
 						type="password"
 						value={password}
