@@ -35,6 +35,9 @@ export default function Header() {
 					<li>
 						<Link href="/creatures">Creatures</Link>
 					</li>
+					<li>
+						<Link href="/ocean-metrics">Ocean Metrics</Link>
+					</li>
 					<li className={styles.authItem}>
 						{user ? (
 							<div className={styles.userMenu}>
