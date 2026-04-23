@@ -1,5 +1,4 @@
-// One-time script to seed creature data into the Cosmos DB creatures container
-// Run with: node src/scripts/seedCreatures.js
+// Script to seed the creatures
 
 require("dotenv").config({ path: ".env.local" });
 const { CosmosClient } = require("@azure/cosmos");
