@@ -59,8 +59,8 @@ export default function Events() {
 		e.preventDefault();
 		const data = {
 			...form,
-			lat: form.lat !== "" ? parseFloat(form.lat) : null,
-			lng: form.lng !== "" ? parseFloat(form.lng) : null,
+			lat: form.lat !== "" ? Number.parseFloat(form.lat) : null,
+			lng: form.lng !== "" ? Number.parseFloat(form.lng) : null,
 		};
 		if (editingId) {
 			updateEvent(editingId, data);
@@ -87,8 +87,7 @@ export default function Events() {
 				<div>
 					<h1 className={styles.title}>Events</h1>
 					<p className={styles.subtitle}>
-						Beach cleanups, workshops, talks, and more — find out what's
-						happening and get involved.
+						Browse, Signup, Act! Get involved with your local community today
 					</p>
 				</div>
 				{isManager && !showForm && (
@@ -105,8 +104,7 @@ export default function Events() {
 					</h2>
 
 					<label className={styles.label}>
-						Title
-						<input
+						Title<input
 							className={styles.input}
 							type="text"
 							value={form.title}
@@ -116,8 +114,7 @@ export default function Events() {
 					</label>
 
 					<label className={styles.label}>
-						Description
-						<textarea
+						Description<textarea
 							className={styles.textarea}
 							value={form.description}
 							onChange={(e) => handleField("description", e.target.value)}
@@ -128,8 +125,7 @@ export default function Events() {
 
 					<div className={styles.row}>
 						<label className={styles.label}>
-							Date
-							<input
+							Date<input
 								className={styles.input}
 								type="date"
 								value={form.date}
@@ -138,8 +134,7 @@ export default function Events() {
 							/>
 						</label>
 						<label className={styles.label}>
-							Time
-							<input
+							Time<input
 								className={styles.input}
 								type="time"
 								value={form.time}
@@ -150,8 +145,7 @@ export default function Events() {
 					</div>
 
 					<label className={styles.label}>
-						Location
-						<input
+						Location<input
 							className={styles.input}
 							type="text"
 							value={form.location}
@@ -162,8 +156,7 @@ export default function Events() {
 
 					<div className={styles.row}>
 						<label className={styles.label}>
-							Latitude
-							<input
+							Latitude<input
 								className={styles.input}
 								type="number"
 								step="any"
@@ -173,8 +166,7 @@ export default function Events() {
 							/>
 						</label>
 						<label className={styles.label}>
-							Longitude
-							<input
+							Longitude<input
 								className={styles.input}
 								type="number"
 								step="any"
