@@ -42,6 +42,25 @@ export default function SightingForm() {
         setSubmitting(true);
         setError("");
 
+        // validate that a creature has been selected
+        if (!creatureName) {
+            setError("Please select a creature before submitting.");
+            setSubmitting(false);
+            return;
+        }
+
+        if (!date) {
+            setError("Please select the date of the sighting.")
+            setSubmitting(false)
+            return;
+        }
+
+        if (!location) {
+            setError("Please tell us where you saw the creature.")
+            setSubmitting(false)
+            return;
+        }
+
         try {
             // post new sighting
             const response = await fetch("/api/sightings", {

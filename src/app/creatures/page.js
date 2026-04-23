@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import CreaturesHeader from "@/components/Sightings/CreaturesHeader/CreaturesHeader";
 import CreatureGrid from "@/components/Sightings/CreatureGrid/CreatureGrid";
+import Link from "next/link";
 
 export default function CreaturesPage() {
     // state for the creatures data fetched from the API

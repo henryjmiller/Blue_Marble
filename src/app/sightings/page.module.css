@@ -11,3 +11,21 @@
     font-size: 1.05rem;
     padding: 60px 0;
 }
+
+.filter {
+    padding: 8px 14px;
+    border: 1px solid #bcccdc;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #0a2e4d;
+    background: #fff;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.buttonDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+}

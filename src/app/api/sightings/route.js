@@ -10,9 +10,9 @@ export async function GET() {
         .query("SELECT * FROM c WHERE c.type = 'sighting'")
         .fetchAll();
 
-    // sort by createdAt timestamp, newest first
+    // sort by date sighted timestamp, newest first
     const sorted = resources.sort((a, b) => 
-        new Date(b.createdAt) - new Date(a.createdAt)
+        new Date(b.date) - new Date(a.date)
     );
 
     return NextResponse.json(sorted);

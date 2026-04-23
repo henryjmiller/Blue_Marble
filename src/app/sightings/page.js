@@ -13,6 +13,10 @@ export default function SightingsPage() {
     const [sightings, setSightings] = useState([]);
     // state to show a loading message while data is being fetched
     const [loading, setLoading] = useState(true);
+    // state for filtering sightings by creature
+    const [filterCreature, setFilterCreature] = useState("");
+    // get creature names from sightings for the filter dropdown
+    const creatureOptions = [...new Set(sightings.map((s) => s.creatureName))];
 
     // get sightings from the API when the page first loads
     useEffect(() => {
@@ -25,21 +29,43 @@ export default function SightingsPage() {
         fetchSightings();
     }, []);
 
+    // filter sightings by selected creature, show all if no filter selected
+        const filteredSightings = filterCreature
+            ? sightings.filter((s) => s.creatureName === filterCreature)
+            : sightings;
+
     return (
         <main className={styles.page}>
             {/* Header with title and kids mode toggle */}
             <SightingsHeader />
 
-            {/* Button to report a new sighting */}
-            <NewSightingButton />
+            {/* div to put buttons in a columm */}
+            <div className={styles.buttonDiv}>
 
+                {/* Button to report a new sighting */}
+                <NewSightingButton />
+
+                {/* Filter sightings by creature */}
+                <select
+                    className={styles.filter}
+                    value={filterCreature}
+                    onChange={(e) => setFilterCreature(e.target.value)}
+                >
+                    <option value="">All creatures</option>
+                    {creatureOptions.map((name) => (
+                        <option key={name} value={name}>{name}</option>
+                    ))}
+                </select>
+
+            </div>
             {/* Show loading message while data is being fetched */}
             {loading ? (
                 <p className={styles.loading}>Loading sightings...</p>
             ) : (
                 // Once loaded, show the grid of sighting cards
-                <SightingGrid sightings={sightings} />
+                <SightingGrid sightings={filteredSightings} />
             )}
+
 
         </main>
     );
