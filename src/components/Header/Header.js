@@ -11,7 +11,7 @@ export default function Header() {
 		<header className={styles.header}>
 			<div className={styles.brand}>
 				<img
-					src="/blueMarbleLogo.svg"
+					src="/blueMarbleLogoWhite.svg"
 					alt="Blue Marble logo"
 					className={styles.logo}
 				/>
