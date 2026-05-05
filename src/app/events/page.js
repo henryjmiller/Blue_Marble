@@ -28,10 +28,13 @@ export default function Events() {
 	const [editingId, setEditingId] = useState(null);
 	const [form, setForm] = useState(EMPTY_FORM);
 	const [confirmDeleteId, setConfirmDeleteId] = useState(null);
+	const [formError, setFormError] = useState(null);
+	const [deleteError, setDeleteError] = useState(null);
 
 	function openCreate() {
 		setForm(EMPTY_FORM);
 		setEditingId(null);
+		setFormError(null);
 		setShowForm(true);
 	}
 
@@ -46,6 +49,7 @@ export default function Events() {
 			lng: event.lng ?? "",
 		});
 		setEditingId(event.id);
+		setFormError(null);
 		setShowForm(true);
 	}
 
@@ -53,26 +57,38 @@ export default function Events() {
 		setShowForm(false);
 		setEditingId(null);
 		setForm(EMPTY_FORM);
+		setFormError(null);
 	}
 
-	function handleSubmit(e) {
+	async function handleSubmit(e) {
 		e.preventDefault();
+		setFormError(null);
 		const data = {
 			...form,
 			lat: form.lat !== "" ? Number.parseFloat(form.lat) : null,
 			lng: form.lng !== "" ? Number.parseFloat(form.lng) : null,
 		};
-		if (editingId) {
-			updateEvent(editingId, data);
-		} else {
-			addEvent({ ...data, createdBy: user.username });
+		try {
+			if (editingId) {
+				await updateEvent(editingId, data);
+			} else {
+				await addEvent({ ...data, createdBy: user.username });
+			}
+			closeForm();
+		} catch {
+			setFormError("Something went wrong saving the event. Please try again.");
 		}
-		closeForm();
 	}
 
-	function handleDelete(id) {
-		deleteEvent(id);
-		setConfirmDeleteId(null);
+	async function handleDelete(id) {
+		try {
+			await deleteEvent(id);
+			setConfirmDeleteId(null);
+			setDeleteError(null);
+		} catch {
+			setConfirmDeleteId(null);
+			setDeleteError("Failed to delete event. Please try again.");
+		}
 	}
 
 	function handleField(field, value) {
@@ -102,6 +118,8 @@ export default function Events() {
 					<h2 className={styles.formTitle}>
 						{editingId ? "Edit Event" : "Create Event"}
 					</h2>
+
+					{formError && <p className={styles.formError}>{formError}</p>}
 
 					<label className={styles.label}>
 						Title<input
@@ -194,6 +212,8 @@ export default function Events() {
 					</div>
 				</form>
 			)}
+
+			{deleteError && <p className={styles.formError}>{deleteError}</p>}
 
 			{events.length === 0 ? (
 				<p className={styles.empty}>

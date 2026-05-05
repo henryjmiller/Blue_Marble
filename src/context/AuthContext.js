@@ -1,12 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect } from "react";
-
-const USERS = [
-	{ username: "admin", password: "admin123", role: "admin", displayName: "Admin" },
-	{ username: "moderator", password: "mod123", role: "moderator", displayName: "Moderator" },
-	{ username: "guest", password: "guest123", role: "guest", displayName: "Guest" },
-];
+import { createContext, useContext, useState, useEffect, useCallback, useMemo } from "react";
 
 const AuthContext = createContext(null);
 
@@ -24,29 +18,41 @@ export function AuthProvider({ children }) {
 		}
 	}, []);
 
-	function login(username, password) {
-		const match = USERS.find(
-			(u) => u.username === username && u.password === password
-		);
-		if (!match) return { success: false, error: "Invalid username or password" };
-
-		const sessionUser = {
-			username: match.username,
-			role: match.role,
-			displayName: match.displayName,
-		};
-		setUser(sessionUser);
-		localStorage.setItem("blueMarbleUser", JSON.stringify(sessionUser));
+	const login = useCallback(async (username, password) => {
+		const res = await fetch("/api/accounts", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ username, password }),
+		});
+		const data = await res.json();
+		if (!data.success) return { success: false, error: data.error };
+		setUser(data.user);
+		localStorage.setItem("blueMarbleUser", JSON.stringify(data.user));
 		return { success: true };
-	}
+	}, []);
 
-	function logout() {
+	const register = useCallback(async (username, password) => {
+		const res = await fetch("/api/accounts/register", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ username, password }),
+		});
+		const data = await res.json();
+		if (!data.success) return { success: false, error: data.error };
+		setUser(data.user);
+		localStorage.setItem("blueMarbleUser", JSON.stringify(data.user));
+		return { success: true };
+	}, []);
+
+	const logout = useCallback(() => {
 		setUser(null);
 		localStorage.removeItem("blueMarbleUser");
-	}
+	}, []);
+
+	const value = useMemo(() => ({ user, login, register, logout }), [user, login, register, logout]);
 
 	return (
-		<AuthContext.Provider value={{ user, login, logout }}>
+		<AuthContext.Provider value={value}>
 			{children}
 		</AuthContext.Provider>
 	);

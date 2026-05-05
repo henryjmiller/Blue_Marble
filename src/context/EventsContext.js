@@ -1,50 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect } from "react";
-
-const SEED_EVENTS = [
-	{
-		id: "1",
-		title: "Coastal Cleanup Day",
-		description:
-			"Join volunteers along the Brighton shoreline to collect litter and plastic waste before it reaches the ocean.",
-		date: "2026-03-15",
-		time: "09:00",
-		location: "Brighton Beach, UK",
-		lat: 50.8198,
-		lng: -0.1371,
-		createdBy: "admin",
-		attendees: ["guest"],
-	},
-	{
-		id: "2",
-		title: "Coral Reef Awareness Workshop",
-		description:
-			"An interactive workshop exploring the importance of coral reefs, the threats they face, and what we can do to help protect them.",
-		date: "2026-04-02",
-		time: "14:00",
-		location: "Blue Marble Community Centre, London",
-		lat: 51.5074,
-		lng: -0.1278,
-		createdBy: "moderator",
-		attendees: [],
-	},
-	{
-		id: "3",
-		title: "Ocean Dead Zones: Public Talk",
-		description:
-			"Marine biologist Dr. Sarah Chen presents the latest research on ocean dead zones and their growing impact on marine ecosystems.",
-		date: "2026-04-18",
-		time: "18:30",
-		location: "University of Plymouth, Lecture Hall B",
-		lat: 50.3755,
-		lng: -4.1427,
-		createdBy: "admin",
-		attendees: ["moderator", "guest"],
-	},
-];
-
-const STORAGE_KEY = "blueMarbleEvents_v2";
+import { createContext, useContext, useState, useEffect, useCallback, useMemo } from "react";
 
 const EventsContext = createContext(null);
 
@@ -52,63 +8,57 @@ export function EventsProvider({ children }) {
 	const [events, setEvents] = useState([]);
 
 	useEffect(() => {
-		const stored = localStorage.getItem(STORAGE_KEY);
-		if (stored) {
-			try {
-				setEvents(JSON.parse(stored));
-			} catch {
-				localStorage.removeItem(STORAGE_KEY);
-				setEvents(SEED_EVENTS);
-			}
-		} else {
-			setEvents(SEED_EVENTS);
-		}
+		fetch("/api/events")
+			.then((r) => r.json())
+			.then(setEvents)
+			.catch(() => setEvents([]));
 	}, []);
 
-	function persist(next) {
-		setEvents(next);
-		localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-	}
+	const addEvent = useCallback(async (event) => {
+		const res = await fetch("/api/events", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(event),
+		});
+		if (!res.ok) throw new Error("Failed to create event");
+		const newEvent = await res.json();
+		setEvents((prev) => [...prev, newEvent]);
+	}, []);
 
-	function addEvent(event) {
-		const newEvent = {
-			...event,
-			id: crypto.randomUUID(),
-			attendees: [],
-		};
-		persist([newEvent, ...events]);
-	}
+	const updateEvent = useCallback(async (id, updates) => {
+		const res = await fetch(`/api/events/${id}`, {
+			method: "PUT",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(updates),
+		});
+		if (!res.ok) throw new Error("Failed to update event");
+		const updated = await res.json();
+		setEvents((prev) => prev.map((e) => (e.id === id ? updated : e)));
+	}, []);
 
-	function updateEvent(id, updates) {
-		persist(events.map((e) => (e.id === id ? { ...e, ...updates } : e)));
-	}
+	const deleteEvent = useCallback(async (id) => {
+		const res = await fetch(`/api/events/${id}`, { method: "DELETE" });
+		if (!res.ok) throw new Error("Failed to delete event");
+		setEvents((prev) => prev.filter((e) => e.id !== id));
+	}, []);
 
-	function deleteEvent(id) {
-		persist(events.filter((e) => e.id !== id));
-	}
+	const toggleAttendance = useCallback(async (eventId, username) => {
+		const res = await fetch(`/api/events/${eventId}`, {
+			method: "PATCH",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ username }),
+		});
+		if (!res.ok) throw new Error("Failed to update attendance");
+		const updated = await res.json();
+		setEvents((prev) => prev.map((e) => (e.id === eventId ? updated : e)));
+	}, []);
 
-	function toggleAttendance(eventId, username) {
-		persist(
-			events.map((e) => {
-				if (e.id !== eventId) return e;
-				const attending = e.attendees.includes(username);
-				return {
-					...e,
-					attendees: attending
-						? e.attendees.filter((u) => u !== username)
-						: [...e.attendees, username],
-				};
-			})
-		);
-	}
-
-	return (
-		<EventsContext.Provider
-			value={{ events, addEvent, updateEvent, deleteEvent, toggleAttendance }}
-		>
-			{children}
-		</EventsContext.Provider>
+	const value = useMemo(
+		() => ({ events, addEvent, updateEvent, deleteEvent, toggleAttendance }),
+		[events, addEvent, updateEvent, deleteEvent, toggleAttendance]
 	);
+
+	return <EventsContext.Provider value={value}>{children}</EventsContext.Provider>;
 }
 
 export function useEvents() {

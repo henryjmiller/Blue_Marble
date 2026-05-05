@@ -6,8 +6,9 @@ import { useAuth } from "../../context/AuthContext";
 import styles from "./page.module.css";
 
 export default function Login() {
-	const { user, login } = useAuth();
+	const { user, login, register } = useAuth();
 	const router = useRouter();
+	const [mode, setMode] = useState("login");
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
@@ -16,10 +17,19 @@ export default function Login() {
 		if (user) router.push("/");
 	}, [user, router]);
 
-	function handleSubmit(e) {
+	function switchMode(next) {
+		setMode(next);
+		setUsername("");
+		setPassword("");
+		setError("");
+	}
+
+	async function handleSubmit(e) {
 		e.preventDefault();
 		setError("");
-		const result = login(username, password);
+		const result = mode === "login"
+			? await login(username, password)
+			: await register(username, password);
 		if (result.success) {
 			router.push("/");
 		} else {
@@ -30,9 +40,13 @@ export default function Login() {
 	return (
 		<main className={styles.page}>
 			<form className={styles.form} onSubmit={handleSubmit}>
-				<h1 className={styles.title}>Log In</h1>
+				<h1 className={styles.title}>
+					{mode === "login" ? "Log In" : "Create Account"}
+				</h1>
 				<p className={styles.subtitle}>
-					Sign in to your Blue Marble account
+					{mode === "login"
+						? "Sign in to your Blue Marble account"
+						: "Join Blue Marble today"}
 				</p>
 
 				{error && <p className={styles.error}>{error}</p>}
@@ -58,17 +72,34 @@ export default function Login() {
 				</label>
 
 				<button className={styles.button} type="submit">
-					Log In
+					{mode === "login" ? "Log In" : "Create Account"}
 				</button>
 
-				<div className={styles.accounts}>
-					<p className={styles.accountsTitle}>Demo accounts</p>
-					<ul className={styles.accountList}>
-						<li><strong>admin</strong> / admin123 — Full access</li>
-						<li><strong>moderator</strong> / mod123 — Can manage events</li>
-						<li><strong>guest</strong> / guest123 — Browse only</li>
-					</ul>
-				</div>
+				{mode === "login" ? (
+					<>
+						<p className={styles.switchMode}>
+							Don&apos;t have an account?{" "}
+							<button type="button" className={styles.switchLink} onClick={() => switchMode("register")}>
+								Sign up
+							</button>
+						</p>
+						<div className={styles.accounts}>
+							<p className={styles.accountsTitle}>Demo accounts</p>
+							<ul className={styles.accountList}>
+								<li><strong>admin</strong> / admin123 — Full access</li>
+								<li><strong>moderator</strong> / mod123 — Can manage events</li>
+								<li><strong>guest</strong> / guest123 — Browse only</li>
+							</ul>
+						</div>
+					</>
+				) : (
+					<p className={styles.switchMode}>
+						Already have an account?{" "}
+						<button type="button" className={styles.switchLink} onClick={() => switchMode("login")}>
+							Log in
+						</button>
+					</p>
+				)}
 			</form>
 		</main>
 	);

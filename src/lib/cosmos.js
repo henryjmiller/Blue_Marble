@@ -19,3 +19,15 @@ export async function getCreaturesContainer() {
     const container = database.container(process.env.COSMOS_CONTAINER_CREATURES);
     return container;
 }
+
+// Returns the events container for api/events routes
+export async function getEventsContainer() {
+    const database = client.database(process.env.COSMOS_DATABASE);
+    return database.container(process.env.COSMOS_CONTAINER_EVENTS);
+}
+
+// Returns the account-data container for api/accounts routes
+export async function getAccountsContainer() {
+    const database = client.database(process.env.COSMOS_DATABASE);
+    return database.container(process.env.COSMOS_CONTAINER_ACCOUNTS);
+}
