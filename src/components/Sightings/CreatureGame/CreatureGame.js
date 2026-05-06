@@ -41,9 +41,9 @@ export default function CreatureGame({ creatures }) {
         // dont run the timer if the game is finished or player has already answered
         if (finished || selected) return;
 
-        // if time runs out move to the next round automatically
+        // if time runs out move to the next
         if (timeLeft === 0) {
-            handleTimeout();
+            setTimeout(() => handleTimeout(), 1000);
             return;
         }
 
@@ -119,7 +119,7 @@ export default function CreatureGame({ creatures }) {
         buildOptions(gameCreatures, next);
     }
 
-    // show loading feedbaack as async for creatures to load from db
+    // show loading feedback as async for creatures to load from db
     if (!creatures || creatures.length === 0) {
         return <p className={styles.loading}>Loading game...</p>;
     }
@@ -207,10 +207,11 @@ export default function CreatureGame({ creatures }) {
                     {selected === currentCreature.id ? (
                         <p className={styles.correctText}>Correct! Well done!</p>
                     ) : selected === "timeout" ? (
+
                         <p className={styles.wrongText}>
                             Time's up! It was the {currentCreature.name}.
                         </p>
-                    ) : (
+                    ) : (   
                         <p className={styles.wrongText}>
                             Not quite! It was the {currentCreature.name}.
                         </p>
