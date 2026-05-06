@@ -10,8 +10,8 @@ export default function CreaturesHeader({ kidsMode, setKidsMode }) {
             </h1>
             <p className={styles.subtitle}>
                 {kidsMode
-                    ? "Discover amazing creatures that live in UK waters!"
-                    : "Learn about the aquatic species found across the UK"}
+                    ? "Discover amazing creatures that live in and around our waters!"
+                    : "Learn about the species found across the UK that rely on the water."}
             </p>
 
             {/* Kids mode toggle switch */}
