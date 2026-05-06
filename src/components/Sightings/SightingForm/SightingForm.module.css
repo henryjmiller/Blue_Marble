@@ -73,7 +73,7 @@
 
 .button {
     padding: 12px;
-    background: #0d6ebd;
+    background: #0a2e4d;
     color: #fff;
     border: none;
     border-radius: 40px;
@@ -85,7 +85,7 @@
 }
 
 .button:hover {
-    background: #0a2e4d;
+    background: #0d6ebd;
 }
 
 .button:disabled {

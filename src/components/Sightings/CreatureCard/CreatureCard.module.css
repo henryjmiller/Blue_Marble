@@ -68,7 +68,8 @@
     padding: 12px;
     background: #f0f7fc;
     border-radius: 8px;
-    border-left: 3px solid #0d6ebd;
+    /* gives the shadowy block left of the border */
+    border-left: 5px solid #0d6ebd;
 }
 
 @media (max-width: 600px) {

@@ -1,11 +1,19 @@
+'use client'
 // Displays the full detail view of a single wildlife sighting
 import Image from "next/image";
 import styles from "./SightingDetail.module.css"
+import { useRouter } from "next/navigation";
 
 export default function SightingDetail({ sighting, creature }) {
+
+    const router = useRouter()
     // return tag
     return (
         <main className={styles.page}>
+            <button className={styles.button} onClick={() => router.push('/sightings')}>
+                Return to Sightings
+            </button>
+            
             {/* Creature photo if available (the question mark) */}
             {creature?.image && (
                 <div className={styles.imageWrapper}>

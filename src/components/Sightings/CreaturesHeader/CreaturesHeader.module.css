@@ -85,7 +85,7 @@
     display: inline-block;
     align-self: flex-start;
     padding: 8px 20px;
-    background: #0d6ebd;
+    background: #0a2e4d;
     color: #fff;
     border-radius: 40px;
     text-decoration: none;
@@ -96,5 +96,5 @@
 }
 
 .gameButton:hover {
-    background: #0a2e4d;
+    background: #0d6ebd;
 }
