@@ -82,6 +82,26 @@
     font-weight: 500;
     cursor: pointer;
     transition: background 0.2s;
+    margin-bottom: 1.5rem;
+}
+
+.backbutton {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #0a2e4d;
+    color: #fff;
+    border: none;
+    border-radius: 40px;
+    font-family: var(--font-quicksand), system-ui, sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-bottom: 1.5rem;
+    text-decoration: none;
+}
+.backbutton:hover {
+    background: #0d6ebd;
 }
 
 .button:hover {
@@ -91,15 +111,6 @@
 .button:disabled {
     opacity: 0.6;
     cursor: not-allowed;
-}
-
-.back {
-    display: inline-block;
-    margin-bottom: 24px;
-    color: #486581;
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition: color 0.2s;
 }
 
 .back:hover {

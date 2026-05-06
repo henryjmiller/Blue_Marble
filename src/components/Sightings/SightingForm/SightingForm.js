@@ -85,12 +85,12 @@ export default function SightingForm() {
 
     return (
         <main className={styles.page}>
-            <Link href="/sightings" className={styles.back}>
+            <Link href="/sightings" className={styles.backbutton}>
                 Return to Sightings
             </Link>
             <h1 className={styles.title}>Report a Sighting</h1>
             <p className={styles.subtitle}>
-                Spotted something? Let the us know!
+                Spotted something? Let us know!
             </p>
 
             <form className={styles.form} onSubmit={handleSubmit}>
