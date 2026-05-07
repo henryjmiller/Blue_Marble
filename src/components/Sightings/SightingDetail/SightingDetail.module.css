@@ -43,7 +43,7 @@
 .badge {
     padding: 4px 14px;
     background: #e8f4fd;
-    color: #0d6ebd;
+    color: #0a4a8f;
     border-radius: 20px;
     font-size: 0.85rem;
     font-weight: 500;
@@ -73,7 +73,7 @@
 
 .scientific {
     margin: 8px 0 0;
-    color: #829ab1;
+    color: #2d5986;
     font-style: italic;
     font-size: 0.9rem;
 }
