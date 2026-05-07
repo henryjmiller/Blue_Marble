@@ -4,18 +4,24 @@
     padding: 48px 24px 80px;
 }
 
-.back {
+.button {
+    padding: 12px;
+    background: #0a2e4d;
+    color: #fff;
+    border: none;
+    border-radius: 40px;
+    font-family: var(--font-quicksand), system-ui, sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-bottom: 1.5rem;
     display: inline-block;
-    margin-bottom: 24px;
-    color: #486581;
-    font-size: 0.9rem;
     text-decoration: none;
-    transition: color 0.2s;
 }
 
-.back:hover {
-    color: #0a2e4d;
-    text-decoration: underline;
+.button:hover {
+    background: #0d6ebd;
 }
 
 .title {

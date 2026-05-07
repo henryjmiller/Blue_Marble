@@ -158,7 +158,7 @@ export default function SightingForm() {
                     type="submit"
                     disabled={submitting}
                 >
-                    {submitting ? "Submitting..." : "Report Sighting"}
+                    {submitting ? "Submitting..." : "Submit Sighting"}
                 </button>
             </form>
         </main>

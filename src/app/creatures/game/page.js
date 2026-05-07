@@ -22,8 +22,8 @@ export default function GamePage() {
 
     return (
         <main className={styles.page}>
-            <Link href="/creatures" className={styles.back}>
-                Back to Wildlife Guide
+            <Link href="/creatures" className={styles.button}>
+                Return to Wildlife Guide
             </Link>
             <h1 className={styles.title}>Creature Spotter!</h1>
             <p className={styles.subtitle}>

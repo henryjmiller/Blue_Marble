@@ -48,6 +48,10 @@
     color: #0a2e4d;
     transition: border-color 0.2s;
     box-sizing: border-box;
+    /* needed to remove iOS styling in mobile browser being too big*/
+    -webkit-appearance: none;
+    appearance: none;
+
 }
 
 .input:focus,

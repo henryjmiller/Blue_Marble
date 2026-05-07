@@ -160,7 +160,7 @@ export default function CreatureGame({ creatures }) {
                     style={{ width: `${(timeLeft / 10) * 100}%` }}
                 />
             </div>
-            <p className={styles.timerText}>{timeLeft}s</p>
+            <p className={styles.timerText}>{timeLeft}s remaining</p>
 
             {/* Creature image */}
             {currentCreature && (
