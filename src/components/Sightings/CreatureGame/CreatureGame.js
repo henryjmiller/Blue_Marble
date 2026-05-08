@@ -89,11 +89,8 @@ export default function CreatureGame({ creatures }) {
     // handles the player selecting an answer
     function handleAnswer(option) {
         setSelected(option.id);
-
-        // increase score if correct
-        if (option.id === gameCreatures[roundIndex].id) {
-            setScore((prev) => prev + 1);
-        }
+        setScore((prev) => prev + 1)
+        
     }
 
     // handles the timer running out with no answer selected
