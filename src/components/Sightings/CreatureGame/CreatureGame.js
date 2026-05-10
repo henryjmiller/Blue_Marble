@@ -193,6 +193,8 @@ export default function CreatureGame({ creatures }) {
                             className={optionStyle}
                             onClick={() => handleAnswer(option)}
                             disabled={!!selected}
+                            // testing id for AT-2
+                            data-testid={option.id === currentCreature.id ? 'correct-answer' : 'wrong-answer'}
                         >
                             {option.name}
                         </button>

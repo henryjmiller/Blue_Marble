@@ -11,6 +11,7 @@ export default function CreatureCard({ creature, kidsMode }) {
                 <div className={styles.imageWrapper}>
                     <Image
                         src={creature.image}
+                        // alt text important for photos
                         alt={creature.name}
                         width={400}
                         height={250}
