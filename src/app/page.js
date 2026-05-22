@@ -31,7 +31,7 @@ export default function Home() {
 				<p className={styles.sectionText}>
 					Blue Marble is a marine conservation initiative dedicated to
 					safeguarding the health of our oceans. We believe that healthy seas
-					are the foundation of a healthy planet — regulating our climate,
+					are the foundation of a healthy planet; regulating our climate,
 					producing the oxygen we breathe, and supporting billions of
 					livelihoods worldwide.
 				</p>
@@ -46,7 +46,6 @@ export default function Home() {
 				<h2 className={styles.sectionTitle}>What We Focus On</h2>
 				<div className={styles.cardGrid}>
 					<div className={styles.card}>
-						<span className={styles.cardIcon}>🌊</span>
 						<h3 className={styles.cardTitle}>Ocean Cleanup</h3>
 						<p className={styles.cardText}>
 							Organising coastal and underwater cleanups to remove plastic,
@@ -54,7 +53,6 @@ export default function Home() {
 						</p>
 					</div>
 					<div className={styles.card}>
-						<span className={styles.cardIcon}>🐠</span>
 						<h3 className={styles.cardTitle}>Marine Life Protection</h3>
 						<p className={styles.cardText}>
 							Advocating for protected marine areas and sustainable fishing
@@ -62,7 +60,6 @@ export default function Home() {
 						</p>
 					</div>
 					<div className={styles.card}>
-						<span className={styles.cardIcon}>🗺️</span>
 						<h3 className={styles.cardTitle}>Dead Zone Mapping</h3>
 						<p className={styles.cardText}>
 							Tracking and visualising oxygen-depleted zones in our oceans so
@@ -70,7 +67,6 @@ export default function Home() {
 						</p>
 					</div>
 					<div className={styles.card}>
-						<span className={styles.cardIcon}>📢</span>
 						<h3 className={styles.cardTitle}>Awareness & Education</h3>
 						<p className={styles.cardText}>
 							Running events, workshops, and campaigns to connect people with
@@ -105,7 +101,7 @@ export default function Home() {
 				<h2 className={styles.sectionTitle}>Get Involved</h2>
 				<p className={styles.sectionText}>
 					Whether you join a beach cleanup, attend one of our events, or simply
-					spread the word — every action makes a difference. Our oceans need
+					spread the word, every action makes a difference. Our oceans need
 					people who care, and that starts with you.
 				</p>
 				<div className={styles.ctaGroup}>
