@@ -162,7 +162,7 @@
 .retry {
     padding: 12px 36px;
     background: #0a2e4d;
-    color: #fff;
+    color: white;
     border: none;
     border-radius: 40px;
     font-family: var(--font-quicksand), system-ui, sans-serif;
