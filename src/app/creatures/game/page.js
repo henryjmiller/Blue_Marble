@@ -27,7 +27,7 @@ export default function GamePage() {
             </Link>
             <h1 className={styles.title}>Creature Spotter!</h1>
             <p className={styles.subtitle}>
-                How well do you know UK wildlife? You have 10 seconds per roud to guess the correct creature!
+                How well do you know UK wildlife? You have 10 seconds per round to guess the correct creature!
             </p>
 
             {loading ? (

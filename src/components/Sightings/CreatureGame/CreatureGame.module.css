@@ -161,7 +161,7 @@
 
 .retry {
     padding: 12px 36px;
-    background: #0d6ebd;
+    background: #0a2e4d;
     color: #fff;
     border: none;
     border-radius: 40px;
@@ -174,7 +174,7 @@
 }
 
 .retry:hover {
-    background: #0a2e4d;
+    background: #0d6ebd;
 }
 
 .loading {
